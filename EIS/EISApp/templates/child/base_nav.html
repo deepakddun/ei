@@ -1,0 +1,14 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link {{child_active}}" href="{{url_for('child.child_basic')}}">Basic Information</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {{address_active}}" href="{{url_for('child.child_address')}}">Address</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {{family_active}}" href="{{url_for('child.child_family')}}">Family Information</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {{diagnosis_active}}" href="{{url_for('child.child_diagnosis')}}" tabindex="-1" aria-disabled="true">Diagnosis</a>
+  </li>
+</ul>

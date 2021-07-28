@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "base_nav.html" %}
+<div class="container border w-50 p-3">
+    <form method="post" action="" novalidate>
+        {{form.hidden_tag()}}
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    {{form.mother_firstname.label()}}
+                    {% if form.mother_firstname.errors %}
+                    {{ form.mother_firstname(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.mother_firstname.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{form.mother_firstname(class="form-control")}}
+                    {% endif %}
+                </div>
+                <div class="col">
+                    {{form.mother_last_name.label()}}
+                    {% if form.mother_last_name.errors %}
+                    {{ form.mother_last_name(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.mother_last_name.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{form.mother_last_name(class="form-control")}}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    {{form.phone_number.country_code.label()}}
+                    {% if form.phone_number.country_code.errors %}
+                    {{ form.phone_number.country_code(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.phone_number.country_code.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{form.phone_number.country_code(class="form-control")}}
+                    {% endif %}
+                </div>
+                <div class="col">
+                    {{form.phone_number.area_code.label()}}
+                    {% if form.phone_number.area_code.errors %}
+                    {{ form.phone_number.area_code(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.phone_number.area_code.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{form.phone_number.area_code(class="form-control")}}
+                    {% endif %}
+                </div>
+                <div class="col">
+                    {{form.phone_number.number.label()}}
+                    {% if form.phone_number.number.errors %}
+                    {{ form.phone_number.number(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.phone_number.number.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{form.phone_number.number(class="form-control")}}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            {{form.email.label()}}
+            {% if form.email.errors %}
+            {{ form.email(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{form.email(class="form-control")}}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{form.submit(class="btn btn-outline-primary")}}
+        </div>
+    </form>
+</div>
+
+
+{% endblock content %}

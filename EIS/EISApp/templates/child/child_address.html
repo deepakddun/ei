@@ -1,75 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+{% include "base_nav.html" %}
 <div class="container border w-50 p-3">
 <form method="post" action="" novalidate>
     {{form.hidden_tag()}}
-  <div class="form-group">
-      {{form.child_firstname.label()}}
-      {% if form.child_firstname.errors %}
-        {{ form.child_firstname(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.child_firstname.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-      {% else %}
-        {{form.child_firstname(class="form-control")}}
-      {% endif %}
-
-  </div>
     <div class="form-group">
-      {{form.child_middlename.label()}}
-      {% if form.child_middlename.errors %}
-        {{ form.child_middlename(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.child_middlename.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-      {% else %}
-        {{form.child_middlename(class="form-control")}}
-      {% endif %}
-  </div>
-    <div class="form-group">
-      {{form.child_lastname.label()}}
-      {% if form.child_lastname.errors %}
-        {{ form.child_lastname(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.child_lastname.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-      {% else %}
-        {{form.child_lastname(class="form-control")}}
-      {% endif %}
-  </div>
-    <div class="form-group">
-      {{form.child_dob.label()}}
-      {% if form.child_dob.errors %}
-        {{ form.child_dob(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.child_dob.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-      {% else %}
-        {{form.child_dob(class="form-control")}}
-      {% endif %}
-  </div>
-  <div class="form-group">
-      {{form.child_gender.label()}}
-      {% if form.child_gender.errors %}
-        {{ form.child_gender(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.child_gender.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-      {% else %}
-        {{form.child_gender(class="form-control")}}
-      {% endif %}
-  </div>
-  <div class="form-group">
       {{form.address1.label()}}
       {% if form.address1.errors %}
         {{ form.address1(class="form-control form-control-lg is-invalid") }}
@@ -139,6 +74,5 @@
   </div>
 </form>
 </div>
-
 
 {% endblock content %}
