@@ -37,6 +37,36 @@
         <div class="form-group">
             <div class="row">
                 <div class="col">
+                    {{form.father_first_name.label()}}
+                    {% if form.father_first_name.errors %}
+                    {{ form.father_first_name(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.father_first_name.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{form.father_first_name(class="form-control")}}
+                    {% endif %}
+                </div>
+                <div class="col">
+                    {{form.father_last_name.label()}}
+                    {% if form.father_last_name.errors %}
+                    {{ form.father_last_name(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.father_last_name.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{form.father_last_name(class="form-control")}}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
                     {{form.phone_number.country_code.label()}}
                     {% if form.phone_number.country_code.errors %}
                     {{ form.phone_number.country_code(class="form-control form-control-lg is-invalid") }}
@@ -80,18 +110,25 @@
         <div class="form-group">
             {{form.email.label()}}
             {% if form.email.errors %}
-            {{ form.email(class="form-control form-control-lg is-invalid") }}
+            {{ form.email(class="form-control form-control-lg is-invalid" ,  rows="10") }}
             <div class="invalid-feedback">
                 {% for error in form.email.errors %}
                 <span>{{ error }}</span>
                 {% endfor %}
             </div>
             {% else %}
-            {{form.email(class="form-control")}}
+            {{form.email(class="form-control" , rows="10")}}
             {% endif %}
         </div>
         <div class="form-group">
-            {{form.submit(class="btn btn-outline-primary")}}
+            <div class="row">
+                <div class="col">
+                    {{form.submit(class="btn btn-outline-primary")}}
+                </div>
+                <div class="col">
+                    <a href="{{url_for('child.child_address')}}" class="btn btn-outline-primary" role="button" aria-pressed="true">Back</a>
+                </div>
+            </div>
         </div>
     </form>
 </div>

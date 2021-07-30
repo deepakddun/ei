@@ -1,8 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField, IntegerField, FormField, TextAreaField
+from wtforms import StringField, SubmitField, SelectField, IntegerField, FormField, TextAreaField, Form
 from wtforms.validators import DataRequired, Email, Length
 from wtforms.fields.html5 import DateField
 import us
+from flask import request
 
 
 class ChildRegistration(FlaskForm):
@@ -26,7 +27,7 @@ class ChildAddress(FlaskForm):
     submit = SubmitField('Next')
 
 
-class TelephoneForm(FlaskForm):
+class TelephoneForm(Form):
     country_code = IntegerField('Country Code', validators=[DataRequired()])
     area_code = IntegerField('Area Code', validators=[DataRequired()])
     number = StringField('Number')
@@ -35,8 +36,7 @@ class TelephoneForm(FlaskForm):
 class FamilyInformation(FlaskForm):
     mother_firstname = StringField('Mother FirstName', validators=[DataRequired('This field is required')])
     mother_last_name = StringField('Mother LastName')
-    father_first_name = StringField('Father FirstName',
-                                    validators=[DataRequired('This field is required')])
+    father_first_name = StringField('Father FirstName', validators=[DataRequired('This field is required')])
     father_last_name = StringField('Father LastName')
     phone_number = FormField(TelephoneForm)
     email = StringField('Email', validators=[Email()])

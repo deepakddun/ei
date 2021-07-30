@@ -2,77 +2,85 @@
 {% block content %}
 {% include "base_nav.html" %}
 <div class="container border w-50 p-3">
-<form method="post" action="" novalidate>
-    {{form.hidden_tag()}}
-    <div class="form-group">
-      {{form.address1.label()}}
-      {% if form.address1.errors %}
-        {{ form.address1(class="form-control form-control-lg is-invalid") }}
+    <form method="post" action="" novalidate>
+        {{form.hidden_tag()}}
+        <div class="form-group">
+            {{form.address1.label()}}
+            {% if form.address1.errors %}
+            {{ form.address1(class="form-control form-control-lg is-invalid") }}
             <div class="invalid-feedback">
                 {% for error in form.address1.errors %}
-                    <span>{{ error }}</span>
+                <span>{{ error }}</span>
                 {% endfor %}
             </div>
-      {% else %}
-        {{form.address1(class="form-control")}}
-      {% endif %}
-  </div>
-  <div class="form-group">
-      {{form.address2.label()}}
-      {% if form.address2.errors %}
-        {{ form.address2(class="form-control form-control-lg is-invalid") }}
+            {% else %}
+            {{form.address1(class="form-control")}}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{form.address2.label()}}
+            {% if form.address2.errors %}
+            {{ form.address2(class="form-control form-control-lg is-invalid") }}
             <div class="invalid-feedback">
                 {% for error in form.address2.errors %}
-                    <span>{{ error }}</span>
+                <span>{{ error }}</span>
                 {% endfor %}
             </div>
-      {% else %}
-        {{form.address2(class="form-control")}}
-      {% endif %}
-  </div>
-  <div class="form-group">
-      {{form.city.label()}}
-      {% if form.city.errors %}
-        {{ form.city(class="form-control form-control-lg is-invalid") }}
+            {% else %}
+            {{form.address2(class="form-control")}}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{form.city.label()}}
+            {% if form.city.errors %}
+            {{ form.city(class="form-control form-control-lg is-invalid") }}
             <div class="invalid-feedback">
                 {% for error in form.city.errors %}
-                    <span>{{ error }}</span>
+                <span>{{ error }}</span>
                 {% endfor %}
             </div>
-      {% else %}
-        {{form.city(class="form-control")}}
-      {% endif %}
-  </div>
-  <div class="form-group">
-      {{form.state.label()}}
-      {% if form.state.errors %}
-        {{ form.state(class="form-control form-control-lg is-invalid") }}
+            {% else %}
+            {{form.city(class="form-control")}}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{form.state.label()}}
+            {% if form.state.errors %}
+            {{ form.state(class="form-control form-control-lg is-invalid") }}
             <div class="invalid-feedback">
                 {% for error in form.state.errors %}
-                    <span>{{ error }}</span>
+                <span>{{ error }}</span>
                 {% endfor %}
             </div>
-      {% else %}
-        {{form.state(class="form-control")}}
-      {% endif %}
-  </div>
-  <div class="form-group">
-      {{form.zip.label()}}
-      {% if form.zip.errors %}
-        {{ form.zip(class="form-control form-control-lg is-invalid") }}
+            {% else %}
+            {{form.state(class="form-control")}}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{form.zip.label()}}
+            {% if form.zip.errors %}
+            {{ form.zip(class="form-control form-control-lg is-invalid") }}
             <div class="invalid-feedback">
                 {% for error in form.zip.errors %}
-                    <span>{{ error }}</span>
+                <span>{{ error }}</span>
                 {% endfor %}
             </div>
-      {% else %}
-        {{form.zip(class="form-control")}}
-      {% endif %}
-  </div>
-    <div class="form-group">
-      {{form.submit(class="btn btn-outline-primary")}}
-  </div>
-</form>
+            {% else %}
+            {{form.zip(class="form-control")}}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    {{form.submit(class="btn btn-outline-primary")}}
+                </div>
+                <div class="col">
+                    <a href="{{url_for('child.child_basic')}}" class="btn btn-outline-primary" role="button" aria-pressed="true">Back</a>
+                </div>
+            </div>
+
+        </div>
+    </form>
 </div>
 
 {% endblock content %}

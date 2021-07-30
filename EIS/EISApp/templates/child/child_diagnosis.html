@@ -18,7 +18,14 @@
             {% endif %}
         </div>
         <div class="form-group">
-            {{form.submit(class="btn btn-outline-primary")}}
+            <div class="row">
+                <div class="col">
+                    {{form.submit(class="btn btn-outline-primary")}}
+                </div>
+                <div class="col">
+                    <a href="{{url_for('child.child_family')}}" class="btn btn-outline-primary" role="button" aria-pressed="true">Back</a>
+                </div>
+            </div>
         </div>
     </form>
 </div>
