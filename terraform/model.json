@@ -1,0 +1,92 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Child Details Schema",
+	"type": "object",
+	"properties": {
+		"child_basic": {
+			"type": "object",
+			"properties": {
+				"child_firstname": {
+					"type": "string"
+				},
+				"child_middlename": {
+					"type": "string"
+				},
+				"child_lastname": {
+					"type": "string"
+				},
+				"child_dob": {
+					"type": "string"
+				},
+				"child_gender": {
+					"type": "string"
+				}
+
+			}
+
+		},
+		"child_address": {
+			"type": "object",
+			"properties": {
+				"address1": {
+					"type": "string"
+				},
+				"address2": {
+					"type": "string"
+				},
+				"county": {
+					"type": "string"
+				},
+				"city": {
+					"type": "string"
+				},
+				"state": {
+					"type": "string"
+				},
+				"zip": {
+					"type": "string"
+				}
+
+			}
+
+		},
+		"child_family": {
+			"type": "object",
+			"properties": {
+				"mother_firstname": {
+					"type": "string"
+				},
+				"mother_last_name": {
+					"type": "string"
+				},
+				"father_first_name": {
+					"type": "string"
+				},
+				"father_last_name": {
+					"type": "string"
+				},
+				"country_code": {
+					"type": "number"
+				},
+				"area_code": {
+					"type": "number"
+				},
+				"number": {
+					"type": "number"
+				},
+				"email": {
+					"type": "string"
+				}
+			}
+
+		},
+		"child_diagnosis": {
+			"type": "object",
+			"properties": {
+				"details": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

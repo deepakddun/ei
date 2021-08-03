@@ -1,8 +1,13 @@
 from flask import session
 import datetime
+import requests
+import json
+
+form_data:dict={}
 
 
-def setValuesToRedis(form, form_type=None):
+def setValuesToRedis(form, form_type):
+    details_dict={}
     for key, value in form.data.items():
         if key not in ('csrf_token', 'submit'):
             print(key, value)
@@ -14,8 +19,24 @@ def setValuesToRedis(form, form_type=None):
                 session['country_code'] = value['country_code']
                 session['area_code'] = value['area_code']
                 session['number'] = value['number']
+                details_dict['country_code'] = value['country_code']
+                details_dict['area_code'] = value['area_code']
+                details_dict['number'] = value['number']
             else:
                 session[key] = value
+                details_dict[key] = value
+    form_data[form_type]= details_dict
+    ##################################################################
+
+    # url = "https://zn2kvypfi0.execute-api.us-east-2.amazonaws.com/Dev/add"
+    #
+    # data = requests.post(url, data = json.dumps(form_data))
+    # print(json.dumps(form_data))
+    # print(data.status_code)
+
+    #################################################################
+    print(form_data)
+
 
 
 def getValuesFromRedis(form, form_type=None):

@@ -15,7 +15,7 @@ def child_basic():
     # for field in form:
     #     print(field.name)
     if form.validate_on_submit():
-        setValuesToRedis(form,form_type)
+        setValuesToRedis(form,child_basic.__name__)
         return redirect(url_for('child.child_address'))
     getValuesFromRedis(form, form_type)
     return render_template('child_register.html', form=form, child_active='active')
@@ -27,7 +27,9 @@ def child_address():
     form = ChildAddress()
     print(request.method)
     if form.validate_on_submit():
-        setValuesToRedis(form)
+        setValuesToRedis(form,child_address.__name__)
+
+
         return redirect(url_for('child.child_family'))
     getValuesFromRedis(form)
     return render_template('child_address.html', form=form, address_active='active')
@@ -39,7 +41,7 @@ def child_family():
     form = FamilyInformation()
     if form.validate_on_submit():
         print('Testing')
-        setValuesToRedis(form)
+        setValuesToRedis(form,child_family.__name__)
         return redirect(url_for('child.child_diagnosis'))
     print('pinting 2')
     getValuesFromRedis(form)
@@ -52,7 +54,7 @@ def child_diagnosis():
     form = DiagnosisInformation()
     print('Testing')
     if form.validate_on_submit():
-        setValuesToRedis(form)
+        setValuesToRedis(form,child_diagnosis.__name__)
         return "<h1> Welcome back </h1>"
     getValuesFromRedis(form)
     return render_template('child_diagnosis.html', form=form, diagnosis_active='active')
