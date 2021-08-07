@@ -1,8 +1,8 @@
-from flask import Flask
+from flask import Flask, g
 import redis
 from flask_session import Session
 import logging
-
+import random
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -10,6 +10,7 @@ c_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message
 c_handler = logging.StreamHandler()
 c_handler.setFormatter(c_format)
 logger.addHandler(c_handler)
+key = None
 
 
 def create_app():
@@ -22,13 +23,10 @@ def create_app():
     app.config['SESSION_REDIS'] = redis.from_url('redis://localhost:6379')
     server_session = Session(app)
 
-
-
     from EIS.EISApp.child.routes import child
     from EIS.EISApp.main.routes import main
 
     app.register_blueprint(child)
     app.register_blueprint(main)
-
-
+    logger.info("Inside create app")
     return app

@@ -1,0 +1,26 @@
+{
+  'ExecutionContext': {
+    'Execution': {
+      'Id': 'arn:aws:states:us-east-2:427128480243:execution:WaitTokenStateMachine:b276819d-6d8f-610d-105e-791008f03a37',
+      'Input': {
+        'Comment': 'Insert your JSON here'
+      },
+      'Name': 'b276819d-6d8f-610d-105e-791008f03a37',
+      'RoleArn': 'arn:aws:iam::427128480243:role/service-role/StepFunctions-MyStateMachine-role-930e77e6',
+      'StartTime': '2021-08-05T15:04:49.342Z'
+    },
+    'StateMachine': {
+      'Id': 'arn:aws:states:us-east-2:427128480243:stateMachine:WaitTokenStateMachine',
+      'Name': 'WaitTokenStateMachine'
+    },
+    'State': {
+      'Name': 'Lambda Callback',
+      'EnteredTime': '2021-08-05T15:04:49.370Z',
+      'RetryCount': 0
+    },
+    'Task': {
+      'Token': 'AAAAKgAAAAIAAAAAAAAAAcHLJcy44keD3gfxzDUZRFSLSkjMZph5nCBs/lnpyRcvZ7JkCAfh0O0tbwgb7XY1pMjyLrLkVSIzyw/8OdaNLSwhBlieXpbadNzpgGFuj4zRyLdr7tKNI6+DA36hnol+LkJ0tPdcM4b+UCepCwq42qY+PYEgsNCKet2YciZhlDyQfw5qHcQwZugZ3QH9yGmcbfrqIjNTkhFggNkl1oWXE/UHAoM3cmvkqCC68KXW6m7K7JvoAnA57PVEWLVXAU29oxkrBhaIOHiUkJpgQdxg/C+xxLZKCu07YzEonGaMiOxTVAP7TpuzUzt1LorKPI/9ad/bb38w4x8Ive975+CKN4wNImpT8PGe3IRUwvApD6yIwxfEZyDCe/x+yxxAAcqBqDjqrzcEgsw9aw0JB84Q+yIZdXpx/VRSfFKZpta1J3K1kq+y7oPDU3p8LhZY57mfP6V9tayz7P9vyUhC/0ClPftAFCERCqX40CK/kocZwdjS5DaJrI/OX89LbOfiptJshKubRrBHlQw3JA7vPRF8QYvYmpFQLUrwiCtpKXIWv/vfDFDdyp8g4ezKA3NaOQlFDJwy/7tQijWQPu3wCoxnvSH+A+G5VOU0B1TOgo/1s0CT'
+    }
+  },
+  'token': 'AAAAKgAAAAIAAAAAAAAAAcHLJcy44keD3gfxzDUZRFSLSkjMZph5nCBs/lnpyRcvZ7JkCAfh0O0tbwgb7XY1pMjyLrLkVSIzyw/8OdaNLSwhBlieXpbadNzpgGFuj4zRyLdr7tKNI6+DA36hnol+LkJ0tPdcM4b+UCepCwq42qY+PYEgsNCKet2YciZhlDyQfw5qHcQwZugZ3QH9yGmcbfrqIjNTkhFggNkl1oWXE/UHAoM3cmvkqCC68KXW6m7K7JvoAnA57PVEWLVXAU29oxkrBhaIOHiUkJpgQdxg/C+xxLZKCu07YzEonGaMiOxTVAP7TpuzUzt1LorKPI/9ad/bb38w4x8Ive975+CKN4wNImpT8PGe3IRUwvApD6yIwxfEZyDCe/x+yxxAAcqBqDjqrzcEgsw9aw0JB84Q+yIZdXpx/VRSfFKZpta1J3K1kq+y7oPDU3p8LhZY57mfP6V9tayz7P9vyUhC/0ClPftAFCERCqX40CK/kocZwdjS5DaJrI/OX89LbOfiptJshKubRrBHlQw3JA7vPRF8QYvYmpFQLUrwiCtpKXIWv/vfDFDdyp8g4ezKA3NaOQlFDJwy/7tQijWQPu3wCoxnvSH+A+G5VOU0B1TOgo/1s0CT'
+}
