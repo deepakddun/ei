@@ -1,0 +1,16 @@
+sample payload from api
+
+{
+    "output":"{\"Status\":\"Approved\"}",
+    "taskToken":"AAAAKgAAAAIAAAAAAAAAASMBcxDJrHKnqKy+OSIt0+XEqbKbASKgd7ufdM3NkafX74kOWIO2CVc9ZZsU31PJVPs7ibvDshyKstcWW1ksVAGfxqm+gbU6wprxFp/M9fxbiyuh21WSdtwpIAWgzmjgeDcCOvv0JlXbFgfyHdBojl0//xL6Vqwc0WrE6fwMGJwGjJ+LdFeE9ycskLex4zi+arAESZO5AcG0aIS5b8vTybh1bmaC4rQ6kWUHudSEVgZWOWMooOM0BZ8Hszn1AhterqelwsDE2ElTFXEmis+fWNyQMMGd+E8aS1jBJVmF7XUWJ5/gz5QxgT4uWBnGxyf4YDUq1ZxaCfXcMVaN/coh6b7jd/nJ/umRtY+kxCO2JwKc+9DTneXRy549XCT8yciaP9oQ/vaPUqBQ3LOYpm6na8z+rwR1ec+ODHLJV4RAX4MiWNT1lltBdj8He5taMjBV0bZ8fsuTDE7lh2bc00k84JLfoF1NScFTpAApuKyqQXBQcQOplZgND/M46hUS28m7VgbT3ySuGmPWTscgOydOGoT4IEzJQFAJJt86YWadHZWOn91PVUPSw+8TpIvERLzM8DuQDQncs41MAyzCmrKa1CBufbkeGVY07HX5mIiZw4KQ"
+}
+
+
+mapping template - method integration
+
+
+
+ {
+    "output" : $input.json('$.output') ,
+    "taskToken" : $input.json('$.taskToken')
+}

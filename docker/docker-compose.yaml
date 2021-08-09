@@ -3,3 +3,11 @@ services:
   redis-server:
     image: 'redis:6.2.5-alpine'
     network_mode: 'host'
+  database:
+    image: 'mysql:8.0.26'
+    network_mode: 'host'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Myscretpassword'
+      MYSQL_DATABASE: 'dev'
+      MYSQL_USER: 'dzs05'
+      MYSQL_PASSWORD: 'Password123@'
