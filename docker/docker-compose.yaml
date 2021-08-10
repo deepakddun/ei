@@ -4,10 +4,13 @@ services:
     image: 'redis:6.2.5-alpine'
     network_mode: 'host'
   database:
-    image: 'mysql:8.0.26'
+    image: 'mysql:8.0'
     network_mode: 'host'
+    cap_add:
+      - SYS_NICE
     environment:
       MYSQL_ROOT_PASSWORD: 'Myscretpassword'
       MYSQL_DATABASE: 'dev'
-      MYSQL_USER: 'dzs05'
-      MYSQL_PASSWORD: 'Password123@'
+      MYSQL_USER: 'd1105'
+      MYSQL_PASSWORD: 'Password123'
+

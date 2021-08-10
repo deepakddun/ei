@@ -1,8 +1,9 @@
-from flask import Flask, g
+from flask import Flask
 import redis
 from flask_session import Session
 import logging
 from flask_sqlalchemy import SQLAlchemy
+
 
 
 logger = logging.getLogger(__name__)
@@ -24,9 +25,10 @@ def create_app():
     app.config['SESSION_REDIS'] = redis.from_url('redis://localhost:6379')
     server_session = Session(app)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://dzs05:Password123@localhost/dev"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqlconnector://d1105:Password123@localhost:3306/dev"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
+
 
     from EIS.EISApp.child.routes import child
     from EIS.EISApp.main.routes import main

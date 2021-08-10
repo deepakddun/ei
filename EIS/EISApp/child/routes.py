@@ -4,6 +4,7 @@ from EIS.EISApp.child.utils import setValuesToRedis, getValuesFromRedis
 from EIS.EISApp import logger
 from EIS.EISApp import key
 import random
+from EIS.EISApp.model import Child , Address ,FamilyInformationTB , Diagnosis , PhoneNumber
 
 child = Blueprint('child', __name__, url_prefix='/child', template_folder="../templates/child")
 
