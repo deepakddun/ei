@@ -5,7 +5,7 @@ print("TESTING")
 
 
 class Child(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True,autoincrement=False)
     firstname = db.Column(db.String(200), nullable=False)
     middlename = db.Column(db.String(200), nullable=False)
     lastname = db.Column(db.String(200), nullable=False)

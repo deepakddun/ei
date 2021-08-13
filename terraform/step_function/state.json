@@ -1,10 +1,47 @@
 {
-  "Comment": "A Hello World example of the Amazon States Language using a Pass state",
-  "StartAt": "HelloWorld",
+  "Comment": "This workflow will be used to manage the EI process",
+  "StartAt": "SendMail",
   "States": {
-    "HelloWorld": {
+    "SendMail": {
       "Type": "Pass",
       "Result": "Hello World!",
+      "Comment": "This state will send the mail to the users",
+      "Next": "ChoiceOutputCheck"
+    },
+    "ChoiceOutputCheck": {
+      "Type": "Choice",
+      "Comment": "This state check if the user has approved or rejected the referral",
+      "Choices": [
+        {
+          "Variable": "$.Status",
+          "StringEquals": "Approved",
+          "Next": "ApprovedState"
+        },
+        {
+          "Variable": "$.Status",
+          "StringEquals": "Rejected",
+          "Next": "RejectedState"
+        }
+      ],
+      "Default": "DefaultState"
+    },
+    "DefaultState": {
+      "Type": "Fail",
+      "Cause": "No Matches!"
+    },
+    "ApprovedState": {
+      "Type": "Pass",
+      "Comment": "If approved send the data to new system using api gateway",
+      "Next": "UpdateDB"
+    },
+    "RejectedState": {
+      "Type": "Pass",
+      "Comment": "If rejected, send the rejection email to user using SNS",
+      "Next": "UpdateDB"
+    },
+    "UpdateDB": {
+      "Type": "Pass",
+      "Comment": "Update the DB with approve or rejected status",
       "End": true
     }
   }

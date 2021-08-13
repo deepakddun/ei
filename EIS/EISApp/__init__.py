@@ -3,7 +3,7 @@ import redis
 from flask_session import Session
 import logging
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_migrate import Migrate
 
 
 logger = logging.getLogger(__name__)
@@ -14,10 +14,12 @@ c_handler.setFormatter(c_format)
 logger.addHandler(c_handler)
 key = None
 db = SQLAlchemy()
+migrate = Migrate()
+
 
 def create_app():
     app = Flask(__name__, template_folder="templates")
-    app.secret_key = "JWqNdK-NtLtsMZVNzJHEg530Fi36v6V7DUTCOUBFB1E"
+    app.secret_key = "JWqNdK-NtLtsMZVNzJHEg530Fi36v6V7DUTCOUBFB1E1112tgH"
 
     app.config['SESSION_TYPE'] = 'redis'
     app.config['SESSION_PERMANENT'] = False
@@ -28,7 +30,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqlconnector://d1105:Password123@localhost:3306/dev"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
-
+    migrate.init_app(app,db)
 
     from EIS.EISApp.child.routes import child
     from EIS.EISApp.main.routes import main
