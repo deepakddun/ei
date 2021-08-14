@@ -1,11 +1,11 @@
 from flask import Blueprint, request, render_template, url_for, redirect, session
 from EIS.EISApp.child.forms import ChildRegistration, ChildAddress, FamilyInformation, DiagnosisInformation
-from EIS.EISApp.child.utils import setValuesToRedis, getValuesFromRedis
+from EIS.EISApp.child.utils import setValuesToRedis, getValuesFromRedis, save_to_db
 from EIS.EISApp import logger
 from EIS.EISApp import key
-import random
 from EIS.EISApp import db
-from EIS.EISApp.model import Child, Address, FamilyInformationTB, Diagnosis, PhoneNumber
+from EIS.EISApp.model import Child
+import random
 
 child = Blueprint('child', __name__, url_prefix='/child', template_folder="../templates/child")
 
@@ -86,25 +86,25 @@ def child_diagnosis():
 
 @child.route('/save_data/<int:key>', methods=['POST'])
 def save_data(key):
-    session_data = session.get(key,None)
+    session_data = session.get(key, None)
     if session_data:
-        child_basic_details = session_data.get(child_basic.__name__)
-        child_address_details = session_data.get(child_address.__name__)
-        child_family_details = session_data.get(child_family.__name__)
-        child_diagnosis_details = session_data.get(child_diagnosis.__name__)
+        save_to_db(session_data, key, child_basic.__name__, child_address.__name__, child_family.__name__,
+                   child_diagnosis.__name__)
 
-        child_model = Child(
-            id= key,
-            firstname = child_basic_details.get('child_firstname',None),
-            middlename = child_basic_details.get('child_middlename',None),
-            lastname = child_basic_details.get('child_lastname',None),
-            child_dob = child_basic_details.get('child_dob',None),
-            child_gender = child_basic_details.get('child_gender',None)
-        )
-
-        db.session.add(child_model)
-        db.session.commit()
+    return "<h1> DATA SAVED </h1>"
 
 
+@child.route('/child/list', methods=['GET'])
+def list_saved_children():
+    page = request.args.get('page', 1, type=int)
+    print(page)
+    children = Child.query.order_by(Child.lastwritten.desc()).paginate(page=page, per_page=4)
+    print(children.total)
+    return render_template('child_list.html', children=children)
 
 
+@child.route('/child/get/<int:key>', methods=['GET'])
+def get_child(key):
+    child_details = Child.query.get(key)
+    print(child_details.addresses.address1)
+    return "Happy"

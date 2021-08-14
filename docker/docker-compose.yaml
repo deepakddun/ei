@@ -13,4 +13,11 @@ services:
       MYSQL_DATABASE: 'dev'
       MYSQL_USER: 'd1105'
       MYSQL_PASSWORD: 'Password123'
+    volumes:
+      - data:/var/lib/mysql
+
+volumes:
+   data:
+     external: true
+
 

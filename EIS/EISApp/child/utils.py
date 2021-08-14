@@ -3,6 +3,8 @@ import datetime
 import requests
 import json
 import random
+from EIS.EISApp import db
+from EIS.EISApp.model import Child, Address, FamilyInformationTB, Diagnosis, PhoneNumber
 
 form_data: dict = {}
 
@@ -68,3 +70,67 @@ def getValuesFromRedis(form, form_type=None):
                 else:
                     field.data = value
                 print(field)
+
+
+def save_to_db(session_data,key ,child_basic , child_address,child_family,child_diagnosis):
+    try:
+        child_basic_details = session_data.get(child_basic)
+        child_address_details = session_data.get(child_address)
+        child_family_details = session_data.get(child_family)
+        child_diagnosis_details = session_data.get(child_diagnosis)
+        print(child_basic_details)
+        print(child_address_details)
+        print(child_family_details)
+        print(child_diagnosis_details)
+
+        child_model = Child(
+            id=key,
+            firstname=child_basic_details.get('child_firstname', None),
+            middlename=child_basic_details.get('child_middlename', None),
+            lastname=child_basic_details.get('child_lastname', None),
+            child_dob=child_basic_details.get('child_dob', None),
+            child_gender=child_basic_details.get('child_gender', None),
+            status='Saved',
+
+        )
+
+        address_model = Address(
+            address1=child_address_details.get('address1'),
+            address2=child_address_details.get('address2'),
+            county=child_address_details.get('county'),
+            city=child_address_details.get('city'),
+            state=child_address_details.get('state'),
+            zip=child_address_details.get('zip'),
+            child_address=child_model
+        )
+        family_model = FamilyInformationTB(
+            mother_firstname=child_family_details.get('mother_firstname'),
+            mother_last_name=child_family_details.get('mother_last_name'),
+            father_first_name=child_family_details.get('father_first_name'),
+            father_last_name=child_family_details.get('father_last_name'),
+            email=child_family_details.get('email'),
+            child_familyinfo=child_model
+        )
+
+        phonenumber_model = PhoneNumber(
+
+            country_code=child_family_details.get('country_code'),
+            area_code=child_family_details.get('area_code'),
+            number=child_family_details.get('number'),
+            child_phonenumber=child_model
+        )
+
+        child_diag_model = Diagnosis(
+            details=child_diagnosis_details.get('details'),
+            child_diagnosis=child_model
+        )
+
+        db.session.add(child_model)
+        db.session.add(address_model)
+        db.session.add(family_model)
+        db.session.add(phonenumber_model)
+        db.session.add(child_diag_model)
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        db.session.rollback()

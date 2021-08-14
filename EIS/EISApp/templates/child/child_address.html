@@ -31,6 +31,19 @@
             {% endif %}
         </div>
         <div class="form-group">
+            {{form.county.label()}}
+            {% if form.county.errors %}
+            {{ form.county(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.county.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{form.county(class="form-control")}}
+            {% endif %}
+        </div>
+        <div class="form-group">
             {{form.city.label()}}
             {% if form.city.errors %}
             {{ form.city(class="form-control form-control-lg is-invalid") }}

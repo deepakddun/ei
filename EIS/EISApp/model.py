@@ -12,11 +12,14 @@ class Child(db.Model):
     child_dob = db.Column(db.Date, nullable=False)
     child_gender = db.Column(db.String(10), nullable=False)
     lastwritten = db.Column(db.DateTime, default=datetime.utcnow)
-    addresses = db.relationship('Address', backref='child', lazy=True)
-    phonenumber = db.relationship('PhoneNumber', backref='child', lazy=True)
-    familyInfo = db.relationship('FamilyInformationTB', backref='child', lazy=True)
-    diagnosis = db.relationship('Diagnosis', backref='child', lazy=True)
+    status = db.Column(db.String(10))
+    addresses = db.relationship('Address', backref='child_address', lazy=True)
+    phonenumber = db.relationship('PhoneNumber', backref='child_phonenumber', lazy=True)
+    familyInfo = db.relationship('FamilyInformationTB', backref='child_familyinfo', lazy=True)
+    diagnosis = db.relationship('Diagnosis', backref='child_diagnosis', lazy=True)
 
+    def __repr__(self):
+        return f"User( {self.firstname} , {self.child_dob}, {self.lastname} )"
 
 class Address(db.Model):
     id = db.Column(db.Integer, primary_key=True)
