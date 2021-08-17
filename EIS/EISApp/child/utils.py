@@ -1,10 +1,11 @@
-from flask import session
+from flask import session, flash
 import datetime
 import requests
 import json
 import random
 from EIS.EISApp import db
 from EIS.EISApp.model import Child, Address, FamilyInformationTB, Diagnosis, PhoneNumber
+import traceback
 
 form_data: dict = {}
 
@@ -72,7 +73,7 @@ def getValuesFromRedis(form, form_type=None):
                 print(field)
 
 
-def save_to_db(session_data,key ,child_basic , child_address,child_family,child_diagnosis):
+def save_to_db(session_data, key, child_basic, child_address, child_family, child_diagnosis):
     try:
         child_basic_details = session_data.get(child_basic)
         child_address_details = session_data.get(child_address)
@@ -131,6 +132,19 @@ def save_to_db(session_data,key ,child_basic , child_address,child_family,child_
         db.session.add(phonenumber_model)
         db.session.add(child_diag_model)
         db.session.commit()
+
+        value = session.pop(key)
+        print(f'Deleted value is {value}')
+        flash(f"Application has been saved. {key} is the reference number","success")
+
     except Exception as e:
-        print(e)
         db.session.rollback()
+        flash("Error while saving data", "danger")
+        traceback.print_exc()
+
+
+def start_workflow():
+    pass
+
+
+

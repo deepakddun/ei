@@ -4,10 +4,11 @@
 <table class="table table-hover">
     <thead>
     <tr>
-        <th scope="col">#</th>
+        <th scope="col">ID</th>
         <th scope="col">First</th>
         <th scope="col">Last</th>
         <th scope="col">Date of Birth</th>
+        <th scope="col">Application Status</th>
         <th scope="col">Action</th>
 
     </tr>
@@ -19,7 +20,8 @@
         <td>{{child.firstname}}</td>
         <td>{{child.lastname}}</td>
         <td>{{child.child_dob}}</td>
-        <td><a class="btn btn-primary mx-1" href="{{url_for('child.get_child',key=child.id)}}" role="button">View</a><a class="btn btn-primary" href="#" role="button">Submit</a></td>
+        <td>{{child.status}}</td>
+        <td><a class="btn btn-primary mx-1" href="{{url_for('child.get_child',key=child.id,page=children.page)}}" role="button">View</a></td>
 
     </tr>
     {% endfor %}
@@ -28,17 +30,17 @@
 
 <nav aria-label="...">
     <ul class="pagination pagination-sm">
-        {% for child in children.iter_pages(left_edge=1, left_current=1, right_current=2, right_edge=1) %}
-        {% if child %}
-        {% if children.page == page %}
-        <li class="page-item active"><a class="page-link" href="{{url_for('main.home' , page=page) }}">{{ page }}</a>
-        </li>
-        {% else %}
-        <li class="page-item"><a class="page-link" href="{{url_for('main.home' , page=page) }}">{{ page }}</a></li>
-        {% endif %}
-        {% else %}
-        <li class="page-item">...</li>
-        {% endif %}
+        {% for page in children.iter_pages(left_edge=1, left_current=1, right_current=1, right_edge=1) %}
+            {% if page %}
+                {% if children.page == page %}
+                    <li class="page-item active"><a class="page-link" href="{{url_for('child.list_saved_children' , page=page) }}">{{ page }}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="{{url_for('child.list_saved_children' , page=page) }}">{{ page }}</a></li>
+                {% endif %}
+            {% else %}
+                <li class="page-item">...</li>
+            {% endif %}
         {% endfor %}
     </ul>
 </nav>

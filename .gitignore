@@ -2,3 +2,4 @@ venv/*
 .idea/*
 terraform/api_gateway_infra/.terraform*
 terraform/step_function/.terraform*
+terraform/common_role/.terraform*

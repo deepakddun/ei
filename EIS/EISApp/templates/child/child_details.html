@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% block content %}
+<nav class="navbar navbar-dark bg-primary mb-2">
+    <!-- Navbar content -->
+    Child Details
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">FirstName</span></div>
+                <div class="col"> {{child_details.firstname}}</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">MiddleName</span></div>
+                <div class="col"> {{child_details.middlename}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">LastName</span></div>
+                <div class="col"> {{child_details.lastname}}</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">Date Of Birth</span></div>
+                <div class="col"> {{child_details.child_dob}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="font-weight-bold">Application Status</span></div>
+                <div class="col">{{child_details.status}}</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-dark bg-primary my-2">
+    <!-- Navbar content -->
+    Address Details
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">Address Line 1</span></div>
+                <div class="col"> {{address_details.address1}}</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">Address Line 2</span></div>
+                <div class="col"> {{address_details.address2}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">County</span></div>
+                <div class="col"> {{address_details.county}}</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">City</span></div>
+                <div class="col"> {{address_details.city}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="font-weight-bold">State</span></div>
+                <div class="col">{{address_details.state}}</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="font-weight-bold">Zip</span></div>
+                <div class="col">{{address_details.zip}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-dark bg-primary my-2">
+    <!-- Navbar content -->
+    Family Information
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">Mother FirstName</span></div>
+                <div class="col"> {{family_details.mother_firstname}}</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">Mother LastName</span></div>
+                <div class="col"> {{family_details.mother_last_name}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">Father FirstName</span></div>
+                <div class="col"> {{family_details.father_first_name}}</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">Father LastName</span></div>
+                <div class="col"> {{family_details.father_last_name}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-dark bg-primary my-2">
+    <!-- Navbar content -->
+    Contact Information
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">Country Code</span></div>
+                <div class="col"> {{phonenumber_details.country_code}}</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">Area Code</span></div>
+                <div class="col"> {{phonenumber_details.area_code}}</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">Phone Number</span></div>
+                <div class="col"> {{phonenumber_details.number}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col"><span class="mr-5 font-weight-bold">Email Address</span></div>
+                <div class="col"> {{family_details.email}}</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container text-center pt-4">
+    <a class="btn btn-primary" href="{{url_for('child.list_saved_children',page=page)}}" role="button">Back</a>
+    <a class="btn btn-primary" href="{{url_for('child.list_saved_children',page=page)}}" role="button">Submit</a>
+</div>
+{% endblock content %}
