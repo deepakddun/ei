@@ -3,3 +3,7 @@ venv/*
 terraform/api_gateway_infra/.terraform*
 terraform/step_function/.terraform*
 terraform/common_role/.terraform*
+terraform/send_email_lambda_function/.terraform*
+.pytest_cache
+EIS/tests/unit/.pytest_cache
+*.pyc

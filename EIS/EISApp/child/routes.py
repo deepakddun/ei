@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, url_for, redirect, session
 from EIS.EISApp.child.forms import ChildRegistration, ChildAddress, FamilyInformation, DiagnosisInformation
-from EIS.EISApp.child.utils import setValuesToRedis, getValuesFromRedis, save_to_db
+from EIS.EISApp.child.utils import setValuesToRedis, getValuesFromRedis, save_to_db, start_workflow
 from EIS.EISApp import logger
 from EIS.EISApp import key
 from EIS.EISApp import db
@@ -39,6 +39,8 @@ def child_basic():
     if form.validate_on_submit():
         setValuesToRedis(form, child_basic.__name__)
         return redirect(url_for('child.child_address'))
+    else :
+        print(form.errors.items())
     getValuesFromRedis(form, child_basic.__name__)
     return render_template('child_register.html', form=form, child_active='active', address_active='disabled',
                            family_active='disabled', diagnosis_active='disabled')
@@ -115,3 +117,7 @@ def get_child(key):
     return render_template('child_details.html', child_details=child_details, address_details=address_details,
                            family_details=family_details
                            , phonenumber_details=phonenumber_details, diag_details=diag_details)
+
+
+def start_worflow():
+    start_workflow()

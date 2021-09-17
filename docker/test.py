@@ -83,3 +83,5 @@ except ClientError as e:
 else:
     print("Email sent! Message ID:"),
     print(response['MessageId'])
+
+    pytest_flask_sqlalchemy / fixtures.py

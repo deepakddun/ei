@@ -14,3 +14,8 @@ mapping template - method integration
     "output" : $input.json('$.output') ,
     "taskToken" : $input.json('$.taskToken')
 }
+
+ {
+    "output" : $input.json('$.output') ,
+    "taskToken" : $input.json('$.taskToken')
+}

@@ -1,3 +1,4 @@
+from botocore.exceptions import ClientError
 from flask import session, flash
 import datetime
 import requests
@@ -6,6 +7,9 @@ import random
 from EIS.EISApp import db
 from EIS.EISApp.model import Child, Address, FamilyInformationTB, Diagnosis, PhoneNumber
 import traceback
+import os
+import boto3
+from EIS.EISApp import logger
 
 form_data: dict = {}
 
@@ -141,10 +145,31 @@ def save_to_db(session_data, key, child_basic, child_address, child_family, chil
         db.session.rollback()
         flash("Error while saving data", "danger")
         traceback.print_exc()
+        raise
 
 
-def start_workflow():
+def start_workflow(ref_number,first_name,middle_name,last_name):
+    name = ""
+    if middle_name:
+        name = f"{first_name} {middle_name} {last_name}"
+    else:
+        name = f"{first_name} {last_name}"
+    if os.environ.get('STEP_ARN'):
+        start_stepfunction(os.environ.get('STEP_ARN'),
+                           {"ref_number": ref_number, "child_name": name})
     pass
+
+
+def start_stepfunction(step_function_arn, payload):
+    try:
+        step_function = boto3.client('stepfunctions')
+        response = step_function.start_execution(stateMachineArn=step_function_arn,
+                                                 input=json.dumps(payload)
+                                                 )
+        logger.info(f"Started step function {response['executionArn']}  at {response['startDate']}")
+    except ClientError as e:
+        logger.exception("Could created state machine")
+        raise
 
 
 
